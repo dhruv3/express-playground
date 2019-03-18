@@ -1,0 +1,19 @@
+{
+  "name": "introtoexpress",
+  "version": "1.0.0",
+  "description": "Working with express.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "js"
+  ],
+  "author": "Dhruv Dogra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
