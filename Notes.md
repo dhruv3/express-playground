@@ -46,5 +46,16 @@ app.use(express.static(path.join(__dirname, 'css')));
     * Routing: app.route. Provides routing interface for requests via HTTP verbs.
 * Express has `set` method for configuring application setting. Example of settings: case-sensitive routing, views, query parser.
 
+# Request API
+* Request API provides props and methods for handling: query/url strings, http headers, params, cookies.
+* Common props in `req` object are body, cookies, params. Similarly req methods are get, is and params.
+
+# Response API
+* Response API provides props and methods for replying to client requests.
+* Props in `res` object are headersSent and locals.
+
+# Routing in Express
+* Routing is handled via `Router` object. Route paths are configured and handled via Router methods.
+
 # Reference
 * [Middleware Defintion in SO](https://stackoverflow.com/questions/7337572/what-does-middleware-and-app-use-actually-mean-in-expressjs)
