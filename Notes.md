@@ -3,7 +3,7 @@
 * When a request arrives, Express will execute each middleware piece sequentially till the middleware doesn't call the next one.
 And at that point, one of the middleware or a route handler returns a response.
 
-# Express-Generator
+## Express-Generator
 ```js
 npm install express-generator -g
 ````
@@ -30,7 +30,7 @@ $ DEBUG=myapp:* npm start
 ```js
 npm install --save-dev mocha
 ```
-# Express API
+## Express API
 * express.static serves static content and is based on `serve-static` middleware. 
 * We can tell express to pick static content from multiple locations. Code for this:
 ```js
@@ -46,16 +46,63 @@ app.use(express.static(path.join(__dirname, 'css')));
     * Routing: app.route. Provides routing interface for requests via HTTP verbs.
 * Express has `set` method for configuring application setting. Example of settings: case-sensitive routing, views, query parser.
 
-# Request API
+## Request API
 * Request API provides props and methods for handling: query/url strings, http headers, params, cookies.
 * Common props in `req` object are body, cookies, params. Similarly req methods are get, is and params.
 
-# Response API
+## Response API
 * Response API provides props and methods for replying to client requests.
 * Props in `res` object are headersSent and locals.
 
-# Routing in Express
+## Routing in Express
 * Routing is handled via `Router` object. Route paths are configured and handled via Router methods.
+
+# Using Express and Express Middleware
+## Using Middleware
+* Express apps rely on using middleware.
+* Middleware have access to response and req objects.
+* 5 types of middleware:
+    ** Application-level middleware: Its bound to app object;
+    ** Router-level middleware: Its bound to router object;
+    ** Error-handling middleware handles errors, and it's identified by the fact that it has to have four parameters;
+    ** Built-In Middleware: There is only one built-in middleware in Express 4.x and above. And that is express.static;
+    ** Third Party Middleware
+## Express Validator
+* Initialize it AFTER `bodyParser`:
+```js
+var expressValidator =  require('express-validator');
+app.use(expressValidator())
+```
+* Usage of this package:
+```js
+req.checkBody('postparam', 'Invalid postparam').notEmpty().isInt();
+req.checkParams('urlparam', 'Invalid postparam').isAlpha();
+```
+## Managing Web Interaction
+* Using GET verb:
+```js
+app.get('/api/users/:id/:loc', function(req, res){
+  var userId = req.params.id;
+  var loc = req.params.loc;
+  console.log(req.params);
+  res.send('\n\nUserID: ' + userId + ' Location: ' + loc + '\n\n');
+})
+```
+* Using POST verb:
+```js
+app.post('/api/users', function(req, res){
+  var userId = req.body.id;
+  var loc = req.body.loc;
+  res.send('\n\nUserID: ' + userId + ' Location: ' + loc + '\n\n');
+})
+```
+* Test POST using command: `curl --data "id=1&loc=USA" localhost:3000/api/users`
+* Cookie Parser middleware has been implemented in midWareAppOne.
+
+## Session and Authentication
+* Generally cookies are used for browser-based session management.
+* Session data itself should be stored on the server side, and only a unique identifier is sent between the client and server in the form of a cookie.
+* Session data should be considered temporary as cookie could be lost by client or server.
 
 # Reference
 * [Middleware Defintion in SO](https://stackoverflow.com/questions/7337572/what-does-middleware-and-app-use-actually-mean-in-expressjs)
