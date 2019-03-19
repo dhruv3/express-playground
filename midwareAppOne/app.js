@@ -19,8 +19,32 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//cookie parser
+//set up cookie parser
+app.use(cookieParser());
+//set a cookie
+app.get('/', function(req, res){
+  //check if client sent cookie
+  var cookie = req.cookies.cookieName;
+  if(cookie == undefined){
+    //if it doesn't exist then create a new cookie
+    var randNum = Math.random().toString();
+    randNum = randNum.substring(2, randNum.length);
+    res.cookie('cookieName', randNum, {maxAge: 90000, httpOnly: true});
+    console.log('Cookie Created Successfully');  
+  }
+  else{
+    console.log('Cookie Exists', cookie); 
+  }
+  res.send('You created a cookie (or one existed): ' + req.cookies.cookieName);
+})
+
+app.get('/del', function(req, res){
+  res.clearCookie(req.cookies.cookieName);
+  res.send("You cleared your cookie.");
+})
 
 //GET verb
 app.get('/api/users/:id/:loc', function(req, res){
