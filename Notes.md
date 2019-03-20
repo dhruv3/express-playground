@@ -104,5 +104,15 @@ app.post('/api/users', function(req, res){
 * Session data itself should be stored on the server side, and only a unique identifier is sent between the client and server in the form of a cookie.
 * Session data should be considered temporary as cookie could be lost by client or server.
 
+## Advance Routing and Features
+* RegEx route must start and end with `/`.
+* Path URLs that start with `/` must be escaped using `\`.
+* Regex `/[MmE]$/` where square brackets implies any combo is okay and $ sign means end.
+* Regex `/\/user|\/users /` where path `/user` or `/users` are okay. Even path like `\users1234` are okay as there's no terminating character in the end.
+* Regex `/\/(\d+)/` where path can consist of any number of digits.
+
+## Advanced Functionality
+* Creating a HTTPS server you need a SSL certificate and self sign it.
+* 
 # Reference
 * [Middleware Defintion in SO](https://stackoverflow.com/questions/7337572/what-does-middleware-and-app-use-actually-mean-in-expressjs)
