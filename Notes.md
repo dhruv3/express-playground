@@ -113,6 +113,5 @@ app.post('/api/users', function(req, res){
 
 ## Advanced Functionality
 * Creating a HTTPS server you need a SSL certificate and self sign it.
-* 
 # Reference
 * [Middleware Defintion in SO](https://stackoverflow.com/questions/7337572/what-does-middleware-and-app-use-actually-mean-in-expressjs)
