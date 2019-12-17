@@ -62,11 +62,12 @@ app.use(express.static(path.join(__dirname, 'css')));
 * Express apps rely on using middleware.
 * Middleware have access to response and req objects.
 * 5 types of middleware:
-    ** Application-level middleware: Its bound to app object;
-    ** Router-level middleware: Its bound to router object;
-    ** Error-handling middleware handles errors, and it's identified by the fact that it has to have four parameters;
-    ** Built-In Middleware: There is only one built-in middleware in Express 4.x and above. And that is express.static;
-    ** Third Party Middleware
+   * Application-level middleware: Its bound to app object;
+   * Router-level middleware: Its bound to router object;
+   * Error-handling middleware handles errors, and it's identified by the fact that it has to have four parameters;
+   * Built-In Middleware: There is only one built-in middleware in Express 4.x and above. And that is express.static;
+   * Third Party Middleware
+    
 ## Express Validator
 * Initialize it AFTER `bodyParser`:
 ```js
